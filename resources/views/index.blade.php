@@ -67,6 +67,8 @@
             <td>
               <form action="{{ url('post/'.$post->id) }}" method="POST">
                 {{ csrf_field() }}
+
+                
                 {{ method_field('delete') }}
 
                 <button type="submit" class="btn btn-danger">
