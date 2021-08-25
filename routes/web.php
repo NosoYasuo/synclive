@@ -11,6 +11,57 @@
 |
 */
 
+use App\Post;
+use Illuminate\Http\Request;
+
+/**
+ * 本のダッシュボード表示(books.blade.php)
+ */
 Route::get('/', function () {
-    return view('welcome');
+
+    $posts = Post::orderBy('created_at', 'asc')->get();
+
+    return view('index', ['posts' => $posts]);
 });
+
+/**
+ * 新「本」を追加
+ */
+Route::post('post', function (Request $request) {
+    //バリデーション
+    $validator = Validator::make($request->all(), [
+        'title' => 'required|max:255',
+    ]);
+
+    //バリデーション:エラー
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    // Eloquentモデル
+    $posts = new Post;
+    $posts->title = $request->title;
+    $posts->channel_id = $request->channel_id;
+    $posts->published = '2017-03-07 00:00:00';
+    $posts->save();
+    return redirect('/');
+});
+
+/**
+ * 本を削除
+ */
+Route::delete('/book/{book}', function (Book $book) {
+    $book->delete();       //追加
+    return redirect('/');  //追加
+});
+
+Route::get('top', function () {
+
+    return 'OKです!';
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
