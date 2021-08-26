@@ -68,7 +68,7 @@
               <form action="{{ url('post/'.$post->id) }}" method="POST">
                 {{ csrf_field() }}
 
-                
+
                 {{ method_field('delete') }}
 
                 <button type="submit" class="btn btn-danger">
@@ -83,7 +83,7 @@
     </div>
   </div>
   @endif
-</div>
+</div>git remote -v
 <!-- Book: 既に登録されてる本のリスト -->
 
 @endsection
