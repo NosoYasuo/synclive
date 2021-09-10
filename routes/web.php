@@ -11,7 +11,9 @@
 |
 */
 
-use App\Post;
+use App\Channel;
+use App\Watch;
+
 use Illuminate\Http\Request;
 
 /**
@@ -19,9 +21,10 @@ use Illuminate\Http\Request;
  */
 Route::get('/', function () {
 
-    $posts = Post::orderBy('created_at', 'asc')->get();
+    $channels = Channel::orderBy('created_at', 'asc')->get();
 
-    return view('index', ['posts' => $posts]);
+
+    return view('index', ['channels' => $channels]);
 });
 
 /**
@@ -30,7 +33,7 @@ Route::get('/', function () {
 Route::post('post', function (Request $request) {
     //バリデーション
     $validator = Validator::make($request->all(), [
-        'title' => 'required|max:255',
+        'channel_id' => 'required|max:255',
     ]);
 
     //バリデーション:エラー
@@ -41,13 +44,14 @@ Route::post('post', function (Request $request) {
     }
 
     // Eloquentモデル
-    $posts = new Post;
-    $posts->title = $request->title;
-    $posts->channel_id = $request->channel_id;
-    $posts->published = '2017-03-07 00:00:00';
-    $posts->save();
+    $channels = new Channel;
+    $channels->channel = $request->channel_id;
+    $channels->users_id = "1";
+    $channels->save();
     return redirect('/');
 });
+
+
 
 /**
  * 本を削除

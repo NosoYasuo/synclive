@@ -17,14 +17,6 @@
   <form action="{{ url('post') }}" method="POST" class="form-horizontal">
     {{ csrf_field() }}
 
-    <!-- タイトル -->
-    <div class="form-group">
-      <div class="col-sm-6">
-        タイトル<input type="text" name="title" class="form-control">
-      </div>
-    </div>
-
-
     <div class="form-group">
       <div class="col-sm-6">
         チャンネルID<input type="text" name="channel_id" class="form-control">
@@ -41,31 +33,49 @@
     </div>
   </form>
 
+  <form action="{{ url('post') }}" method="POST" class="form-horizontal">
+    {{ csrf_field() }}
+
+    <div class="form-group">
+      <div class="col-sm-6">
+        watchID<input type="text" name="watch_id" class="form-control">
+      </div>
+    </div>
+
+    <!-- 本 登録ボタン -->
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-6">
+        <button type="submit" class="btn btn-primary">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+
 
   <!-- 現在の本 -->
-  @if (count($posts) > 0)
+  @if (count($channels) > 0)
   <div class="card-body">
     <div class="card-body">
       <table class="table table-striped task-table">
         <!-- テーブルヘッダ -->
         <thead>
-          <th>一覧</th>
+          <th>Channel一覧</th>
           <th>&nbsp;</th>
         </thead>
         <!-- テーブル本体 -->
         <tbody>
-          @foreach ($posts as $post)
+          @foreach ($channels as $channel)
           <tr>
             <!-- 本タイトル -->
             <td class="table-text">
-              <h1>{{$post->title}}</h1>
-              <iframe width="480" height="360" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($post->GetId($post->channel_id), ENT_QUOTES, 'UTF-8') ?>" frameborder="0" allowfullscreen></iframe>
+              <iframe width="480" height="360" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($channel->GetId($channel->channel), ENT_QUOTES, 'UTF-8') ?>" frameborder="0" allowfullscreen></iframe>
 
             </td>
 
             <!-- 本: 削除ボタン -->
             <td>
-              <form action="{{ url('post/'.$post->id) }}" method="POST">
+              <form action="{{ url('post/'.$channel->id) }}" method="POST">
                 {{ csrf_field() }}
 
 
@@ -83,7 +93,7 @@
     </div>
   </div>
   @endif
-</div>git remote -v
+</div>
 <!-- Book: 既に登録されてる本のリスト -->
 
 @endsection
