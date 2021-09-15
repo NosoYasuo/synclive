@@ -3,8 +3,8 @@
         use Illuminate\Support\Facades\Schema;
         use Illuminate\Database\Schema\Blueprint;
         use Illuminate\Database\Migrations\Migration;
-        
-        class CreateWatchsTable extends Migration
+
+        class CreateWatchesTable extends Migration
         {
             /**
              * Run the migrations.
@@ -13,13 +13,13 @@
              */
             public function up()
             {
-                Schema::create("watchs", function (Blueprint $table) {
+                Schema::create("watches", function (Blueprint $table) {
 
 						$table->bigIncrements('id');
 						$table->string('watch');
 						$table->bigInteger('users_id')->unsigned();
 						$table->timestamps();
-						
+
 
                     //*********************************
                     // Foreign KEY [ Uncomment if you want to use!! ]
@@ -48,7 +48,6 @@
              */
             public function down()
             {
-                Schema::dropIfExists("watchs");
+                Schema::dropIfExists("watches");
             }
         }
-    
