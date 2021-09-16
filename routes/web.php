@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +21,12 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
 
     $channels = Channel::orderBy('created_at', 'asc')->get();
-
-
-    return view('index', ['channels' => $channels]);
+    $watches= Watch::orderBy('created_at', 'asc')->get();
+    // dd($watches);
+    return view('index', ['channels' => $channels, 'watches' => $watches]);
 });
+
+
 
 /**
  * 新「本」を追加
@@ -51,15 +52,47 @@ Route::post('post', function (Request $request) {
     return redirect('/');
 });
 
+Route::post('watch', function (Request $request) {
+    //バリデーション
+    $validator = Validator::make($request->all(), [
+        'watch_id' => 'required|max:255',
+    ]);
 
+    //バリデーション:エラー
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    // Eloquentモデル
+    $watches = new Watch;
+    $watches->watch = $request->watch_id;
+    $watches->users_id = "1";
+    $watches->save();
+    return redirect('/');
+});
 
 /**
  * 本を削除
  */
-Route::delete('/book/{book}', function (Book $book) {
-    $book->delete();       //追加
+Route::delete('/channel/{channel}', function (Channel $channel) {
+    $channel->delete();       //追加
     return redirect('/');  //追加
 });
+
+Route::delete('/watch/{watch}', function (Watch $watch) {
+    $watch->delete();       //追加
+    return redirect('/');  //追加
+});
+
+// /**
+//  * 本を削除
+//  */
+// Route::delete('/book/{book}', function (Book $book) {
+//     $book->delete();       //追加
+//     return redirect('/');  //追加
+// });
 
 Route::get('top', function () {
 
