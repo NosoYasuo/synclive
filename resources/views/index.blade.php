@@ -133,7 +133,7 @@
             <!-- 本タイトル -->
             <td class="table-text">
               <div>{{$channel->id}}</div>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($channel->GetId($channel->channel), ENT_QUOTES, 'UTF-8') ?>" frameborder="0" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($channel->GetId($channel->channel), ENT_QUOTES, 'UTF-8') ?>?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
               <div>channel:{{$channel->channel}}</div>
               <div>users_id:{{$channel->users_id}}</div>
               <div>created_at:{{$channel->created_at}}</div>
@@ -176,7 +176,7 @@
           <!-- 本タイトル -->
           <td class="table-text">
             <div>{{$watch->id}}</div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$watch -> watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$watch -> watch}}?autoplay=1&mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div>channel:{{$watch->watch}}</div>
             <div>users_id:{{$watch->users_id}}</div>
             <div>created_at:{{$watch->created_at}}</div>
