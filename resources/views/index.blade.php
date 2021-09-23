@@ -67,9 +67,12 @@
   }
 </style>
 <!-- Bootstrapの定形コード… -->
-<d>
+<div>
 
-  <div class="text-center">𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚</div>
+  <h1 div class="text-center">𝙎𝙮𝙣𝙘😄𝙇𝙞𝙫𝙚</div>
+    <div>
+
+        <h3 div class="text-center">あなたも世界をライブ・プロデュース！💌</div>
 
   <!-- バリデーションエラーの表示に使用-->
   @include('common.errors')
