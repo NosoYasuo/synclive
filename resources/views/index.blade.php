@@ -67,14 +67,73 @@
   }
 </style>
 <!-- Bootstrapの定形コード… -->
-<div>
-  <div>
+<d>
 
-  </div>
+  <div class="text-center">𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚</div>
 
   <!-- バリデーションエラーの表示に使用-->
   @include('common.errors')
   <!-- バリデーションエラーの表示に使用-->
+
+
+
+
+  <!-- 現在の本 -->
+  @if (count($channels) > 0)
+  <div>Channel一覧</div>
+  <div class="card-body d-flex">
+
+    @foreach ($channels as $channel)
+    <div class="">
+      <!-- 本タイトル -->
+      <div>{{$channel->id}}</div>
+      <iframe width="373" height="210" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($channel->GetId($channel->channel), ENT_QUOTES, 'UTF-8') ?>?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
+      <div>channel:{{$channel->channel}}</div>
+      <div>users_id:{{$channel->users_id}}</div>
+      <div>created_at:{{$channel->created_at}}</div>
+
+      <!-- 本: 削除ボタン -->
+      <form action="{{ url('channel/'.$channel->id) }}" method="POST">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+        <button type="submit" class="">
+          DELETE
+        </button>
+      </form>
+    </div>
+    @endforeach
+  </div>
+  @endif
+  <!-- Book: 既に登録されてる本のリスト -->
+  <!-- 現在の本 -->
+  @if (count($watches) > 0)
+  <div>Watch一覧</div>
+  <div class="card-body d-flex">
+
+    <!-- テーブル本体 -->
+    @foreach ($watches as $watch)
+    <!-- 本タイトル -->
+    <div>
+      <div>{{$watch->id}}</div>
+      <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch -> watch}}?autoplay=1&mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div>channel:{{$watch->watch}}</div>
+      <div>users_id:{{$watch->users_id}}</div>
+      <div>created_at:{{$watch->created_at}}</div>
+
+      <!-- 本: 削除ボタン -->
+      <form action="{{ url('watch/'.$watch->id) }}" method="POST">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+        <button type="submit" class="">
+          DELETE
+        </button>
+      </form>
+    </div>
+    @endforeach
+  </div>
+  @endif
+  <!-- Book: 既に登録されてる本のリスト -->
+
 
   <!-- 本登録フォーム -->
   <form action="{{ url('post') }}" method="POST" class="form-horizontal">
@@ -114,95 +173,5 @@
       </div>
     </div>
   </form>
-
-
-  <!-- 現在の本 -->
-  @if (count($channels) > 0)
-  <div class="">
-    <div class="">
-      <table class="">
-        <!-- テーブルヘッダ -->
-        <thead>
-          <th>Channel一覧</th>
-          <th>&nbsp;</th>
-        </thead>
-        <!-- テーブル本体 -->
-        <tbody>
-          @foreach ($channels as $channel)
-          <tr>
-            <!-- 本タイトル -->
-            <td class="table-text">
-              <div>{{$channel->id}}</div>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($channel->GetId($channel->channel), ENT_QUOTES, 'UTF-8') ?>?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
-              <div>channel:{{$channel->channel}}</div>
-              <div>users_id:{{$channel->users_id}}</div>
-              <div>created_at:{{$channel->created_at}}</div>
-            </td>
-
-            <!-- 本: 削除ボタン -->
-            <td>
-              <form action="{{ url('channel/'.$channel->id) }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('delete') }}
-                <button type="submit" class="">
-                  削除
-                </button>
-              </form>
-            </td>
-
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
   </div>
-  @endif
-</div>
-<!-- Book: 既に登録されてる本のリスト -->
-<!-- 現在の本 -->
-@if (count($watches) > 0)
-<div class="card-body">
-  <div class="card-body">
-    <table class="table table-striped task-table">
-      <!-- テーブルヘッダ -->
-      <thead>
-        <th>Watch一覧</th>
-        <th>&nbsp;</th>
-      </thead>
-      <!-- テーブル本体 -->
-      <tbody>
-        @foreach ($watches as $watch)
-        <tr>
-          <!-- 本タイトル -->
-          <td class="table-text">
-            <div>{{$watch->id}}</div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$watch -> watch}}?autoplay=1&mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div>channel:{{$watch->watch}}</div>
-            <div>users_id:{{$watch->users_id}}</div>
-            <div>created_at:{{$watch->created_at}}</div>
-          </td>
-
-          <!-- 本: 削除ボタン -->
-          <td>
-
-            <form action="{{ url('watch/'.$watch->id) }}" method="POST">
-              {{ csrf_field() }}
-              {{ method_field('delete') }}
-              <button type="submit" class="btn btn-danger">
-                削除
-              </button>
-            </form>
-          </td>
-
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-</div>
-@endif
-</div>
-<!-- Book: 既に登録されてる本のリスト -->
-
-
-@endsection
+  @endsection
