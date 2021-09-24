@@ -2,77 +2,14 @@
 @extends('layouts.app')
 @section('content')
 
-<style>
-  h1 {
-    text-align: center;
-    /* IE用の中央寄せ */
-    border: dotted 1px #cecbcb;
-    /* 枠線（色） */
-    display: block;
-    background-color: rgb(247, 245, 245);
-    margin: 0 auto;
-    max-width: auto;
-  }
 
-  h3 {
-    color: darkkhaki
-  }
-
-
-  .all {
-    text-align: center;
-    /* IE用の中央寄せ */
-    border: dotted 1px #cecbcb;
-    /* 枠線（赤） */
-    /* width: 1560px; */
-    display: block;
-    margin: 0 auto;
-    max-width: auto;
-  }
-
-  ul {
-    display: flex;
-    justify-content: center;
-    /* width: 1560px; */
-    /* padding-left: 100px;
-    padding-right: 100px; */
-    max-width: auto;
-  }
-
-  .wrapper {
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-
-  }
-
-
-
-  .imgs {
-    width: 25%;
-    transition: all 1s linear 0s;
-  }
-
-  .imgs:hover {
-    transform: rotateZ(360deg);
-  }
-
-  audio {
-    width: 9%;
-  }
-
-  .tsuzuku {
-    padding-top: 100px;
-    color: red;
-  }
-</style>
 <!-- Bootstrapの定形コード… -->
 <div>
 
   <h1 div class="text-center">𝙎𝙮𝙣𝙘😄𝙇𝙞𝙫𝙚</div>
     <div>
 
-        <h3 div class="text-center">あなたも世界をライブ・プロデュース！💌</div>
+        <h5 div class="text-center">あなたも世界をライブ・プロデュース！💌</div>
 
   <!-- バリデーションエラーの表示に使用-->
   @include('common.errors')
@@ -118,7 +55,7 @@
     <!-- 本タイトル -->
     <div>
       <div>{{$watch->id}}</div>
-      <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch -> watch}}?autoplay=1&mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch -> watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch -> watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div>channel:{{$watch->watch}}</div>
       <div>users_id:{{$watch->users_id}}</div>
       <div>created_at:{{$watch->created_at}}</div>
