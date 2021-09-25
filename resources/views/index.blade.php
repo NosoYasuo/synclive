@@ -21,7 +21,7 @@
   <!-- 現在の本 -->
   @if (count($channels) > 0)
   <div>Channel一覧</div>
-  <div class="card-body d-flex">
+  <div class="card-body d-flex justify-content-around flex-wrap">
 
     @foreach ($channels as $channel)
     <div class="">
@@ -48,7 +48,7 @@
   <!-- 現在の本 -->
   @if (count($watches) > 0)
   <div>Watch一覧</div>
-  <div class="card-body d-flex">
+  <div class="card-body d-flex justify-content-around flex-wrap">
 
     <!-- テーブル本体 -->
     @foreach ($watches as $watch)

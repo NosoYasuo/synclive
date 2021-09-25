@@ -14,7 +14,7 @@ class Channel extends Model
         $rss = preg_replace("/<([^>]+?):(.+?)>/", "<$1_$2>", $rss);
         $rss = simplexml_load_string($rss, 'SimpleXMLElement', LIBXML_NOCDATA);
 
-        foreach ($rss->entry as $value) {
+        foreach ($rss -> entry as $value) {
             return $value->yt_videoId;
             if ($value === 0) {
             } else {
