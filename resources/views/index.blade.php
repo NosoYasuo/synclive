@@ -6,7 +6,7 @@
 <script src="{{ asset('/js/index.js') }}"></script>
 
 <h1 class="text-center">𝙎𝙮𝙣𝙘😄𝙇𝙞𝙫𝙚</h1>
-<h3 class="text-center">あなたも世界をライブ・プロデュース！💌</h3>
+<h5 class="text-center">あなたも世界をライブ・プロデュース！💌</h5>
 
 <!-- バリデーションエラーの表示に使用-->
 @include('common.errors')
@@ -15,16 +15,17 @@
 <!-- 現在の本 -->
 @if (count($channels) > 0)
 <div>Channel一覧</div>
-<div class="card-body d-flex">
+<div class="card-body d-flex justify-content-around flex-wrap">
 @foreach ($channels as $channel)
   <div>
     <!-- 本タイトル -->
-    <div>{{$channel->id}}</div>
+
+    <!-- ?autoplay=1&mute=1&playsinline=1&loop=1 -->
+    <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$channel->GetId($channel->channel)}}?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
+    <div>watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
+    <div>No.{{$channel->id}}</div>
     <div>作者:<a id="c_author{{$channel->id}}"></a></div>
     <div>タイトル:<a id="c_title{{$channel->id}}"></a></div>
-    <!-- ?autoplay=1&mute=1&playsinline=1&loop=1 -->
-    <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$channel->GetId($channel->channel)}}?mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
-    <div>watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
     <div>users_id:{{$channel->users_id}}</div>
     <div>created_at:{{$channel->created_at}}</div>
 
@@ -46,16 +47,17 @@
 <!-- 現在の本 -->
 @if (count($watches) > 0)
 <div>Watch一覧</div>
-<div class="card-body d-flex">
+<div class="card-body d-flex justify-content-around flex-wrap">
   <!-- テーブル本体 -->
   @foreach ($watches as $watch)
   <!-- 本タイトル -->
   <div>
-    <div>ID{{$watch->id}}</div>
+
+    <!--autoplay=1&mute=1&playsinline=1&loop=1-->
+    <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch->watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div>No.{{$watch->id}}</div>
     <div>作者:<a id="author{{$watch->id}}"></a></div>
     <div>タイトル:<a id="title{{$watch->id}}"></a></div>
-    <!--autoplay=1&mute=1&playsinline=1&loop=1-->
-    <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div>watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     <div>users_id:{{$watch->users_id}}</div>
     <div>created_at:{{$watch->created_at}}</div>
