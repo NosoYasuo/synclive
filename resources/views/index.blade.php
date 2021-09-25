@@ -77,7 +77,7 @@
 
 
 <!-- チャンネルID登録フォーム -->
-<form action="{{ url('post') }}" method="POST" class="form-horizontal">
+<form action="{{ url('postChannel') }}" method="POST" class="form-horizontal">
   {{ csrf_field() }}
   <div>
     <div>
@@ -93,7 +93,7 @@
 </form>
 
 <!-- watch ID登録フォーム -->
-<form action="{{ url('watch') }}" method="POST" class="">
+<form action="{{ url('postWatch') }}" method="POST" class="">
   {{ csrf_field() }}
   <div class="">
     <div class="">
