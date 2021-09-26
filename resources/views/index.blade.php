@@ -23,7 +23,7 @@
     <!-- ?autoplay=1&mute=1&playsinline=1&loop=1 -->
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$channel->GetId($channel->channel)}}?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
 
-    <div>watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
+    <div style="display:none;">watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
     <div>No.{{$channel->id}}</div>
     <div>作者:<a id="c_author{{$channel->id}}"></a></div>
     <div>タイトル:<a id="c_title{{$channel->id}}"></a></div>
@@ -59,7 +59,7 @@
     <div>No.{{$watch->id}}</div>
     <div>作者:<a id="author{{$watch->id}}"></a></div>
     <div>タイトル:<a id="title{{$watch->id}}"></a></div>
-    <div>watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
+    <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     <div>users_id:{{$watch->users_id}}</div>
     <div>created_at:{{$watch->created_at}}</div>
 
