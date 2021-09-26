@@ -22,6 +22,7 @@
 
     <!-- ?autoplay=1&mute=1&playsinline=1&loop=1 -->
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$channel->GetId($channel->channel)}}?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
+
     <div>watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
     <div>No.{{$channel->id}}</div>
     <div>作者:<a id="c_author{{$channel->id}}"></a></div>
