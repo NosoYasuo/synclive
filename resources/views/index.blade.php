@@ -25,7 +25,7 @@
     <div>作者:<a id="c_author{{$channel->id}}"></a></div>
     <div>タイトル:<a id="c_title{{$channel->id}}"></a></div>
     <div>watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
-    <div>users_id:{{$channel->users_id}}</div>
+    <div><a href="{{ url('mypage/'.$channel->users_id)}}">users_id:{{$channel->users_id}}</a></div>
     <div>created_at:{{$channel->created_at}}</div>
 
     <!-- 本: 削除ボタン -->
@@ -57,7 +57,7 @@
     <div>作者:<a id="author{{$watch->id}}"></a></div>
     <div>タイトル:<a id="title{{$watch->id}}"></a></div>
     <div>watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
-    <div>users_id:{{$watch->users_id}}</div>
+    <div><a href="{{ url('userpage/'.$watch->users_id)}}">users_id:{{$watch->users_id}}</a></div>
     <div>created_at:{{$watch->created_at}}</div>
 
     <!-- 本: 削除ボタン -->
@@ -75,35 +75,36 @@
 @endif
 <!-- 既に登録されてるリスト -->
 
+  @auth
+    <!-- チャンネルID登録フォーム -->
+    <form action="{{ url('postChannel') }}" method="POST" class="form-horizontal">
+      {{ csrf_field() }}
+      <div>
+        <div>
+          チャンネルID<input type="text" name="channel_id" class="">
+        </div>
+      </div>
+      <!-- 本 登録ボタン -->
+      <div class="">
+        <div class="">
+          <button type="submit" class="">Save</button>
+        </div>
+      </div>
+    </form>
 
-<!-- チャンネルID登録フォーム -->
-<form action="{{ url('postChannel') }}" method="POST" class="form-horizontal">
-  {{ csrf_field() }}
-  <div>
-    <div>
-      チャンネルID<input type="text" name="channel_id" class="">
-    </div>
-  </div>
-  <!-- 本 登録ボタン -->
-  <div class="">
-    <div class="">
-      <button type="submit" class="">Save</button>
-    </div>
-  </div>
-</form>
+    <!-- watch ID登録フォーム -->
+    <form action="{{ url('postWatch') }}" method="POST" class="">
+      {{ csrf_field() }}
+      <div class="">
+        <div class="">
+          watchID<input type="text" name="watch_id" class="">
+        </div>
+      </div>
 
-<!-- watch ID登録フォーム -->
-<form action="{{ url('postWatch') }}" method="POST" class="">
-  {{ csrf_field() }}
-  <div class="">
-    <div class="">
-      watchID<input type="text" name="watch_id" class="">
-    </div>
-  </div>
-
-  <!-- 本 登録ボタン -->
-  <div class="">
-    <button type="submit" class="">Save</button>
-  </div>
-</form>
+      <!-- 本 登録ボタン -->
+      <div class="">
+        <button type="submit" class="">Save</button>
+      </div>
+    </form>
+  @endif
 @endsection

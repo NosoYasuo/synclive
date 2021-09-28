@@ -10,13 +10,26 @@
 |
 */
 
-Route::get('/', 'SyncController@index');
-Route::get('/chat', 'SyncController@chat');
-Route::post('/add', 'SyncController@store_chat');
+//ログインした人だけが見えるページ
+Route::group(['middleware' => 'auth'], function () {
+
+
 Route::post('postChannel', 'SyncController@store_channel');
 Route::post('postWatch', 'SyncController@store_watch');
 
-Route::get('/result/ajax', 'SyncController@getData');
+Route::get('userpage/{id}', 'UserController@userpage');
+
+Route::get('mypage', 'UserController@mypage');
+
+//chatに関して
+Route::get('/chat/{id}', 'SyncController@chat');
+Route::post('/add', 'SyncController@store_chat');
+Route::get('chat/result/ajax', 'SyncController@getData');
+});
+
+Route::get('/', 'SyncController@index');
+
+
 
 // 削除
 Route::delete('/channel/{channel}', function (Channel $channel) {
