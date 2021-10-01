@@ -33,6 +33,37 @@
 <div>コメントはまだありません</div>
 @endif
 
+@if (count($watches) > 0)
+  <div>自分のWatch一覧</div>
+  <div class="card-body d-flex">
+    <!-- テーブル本体 -->
+    @foreach ($watches as $watch)
+  <!-- 本タイトル -->
+  <div>
+    <div>ID{{$watch->id}}</div>
+    <!--autoplay=1&mute=1&playsinline=1&loop=1-->
+    <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div>作者:<a id="author{{$watch->id}}"></a></div>
+    <div>タイトル:<a id="title{{$watch->id}}"></a></div>
+    <div>watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
+    <div>created_at:{{$watch->created_at}}</div>
+    <script>GetInfoWatch({{$watch->id}});</script>
+
+      <!-- 本: 削除ボタン -->
+      <form action="{{ url('watch/'.$watch->id) }}" method="POST">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+        <button type="submit" class="">
+          DELETE
+        </button>
+      </form>
+    </div>
+    <script>GetInfoWatch({{$watch->id}});</script>
+    @endforeach
+  </div>
+@endif
+
+
 
 @if (count($channels) > 0)
 <div>自分のChannel一覧</div>
@@ -64,34 +95,5 @@
 @endif
 
 
-@if (count($watches) > 0)
-  <div>自分のWatch一覧</div>
-  <div class="card-body d-flex">
-    <!-- テーブル本体 -->
-    @foreach ($watches as $watch)
-  <!-- 本タイトル -->
-  <div>
-    <div>ID{{$watch->id}}</div>
-    <!--autoplay=1&mute=1&playsinline=1&loop=1-->
-    <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?mute=1&playsinline=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div>作者:<a id="author{{$watch->id}}"></a></div>
-    <div>タイトル:<a id="title{{$watch->id}}"></a></div>
-    <div>watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
-    <div>created_at:{{$watch->created_at}}</div>
-    <script>GetInfoWatch({{$watch->id}});</script>
-
-      <!-- 本: 削除ボタン -->
-      <form action="{{ url('watch/'.$watch->id) }}" method="POST">
-        {{ csrf_field() }}
-        {{ method_field('delete') }}
-        <button type="submit" class="">
-          DELETE
-        </button>
-      </form>
-    </div>
-    <script>GetInfoWatch({{$watch->id}});</script>
-    @endforeach
-  </div>
-@endif
 
 @endsection
