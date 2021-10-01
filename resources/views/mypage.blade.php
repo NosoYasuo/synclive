@@ -10,7 +10,7 @@
 <div>name:{{Auth::user()->name}}</div>
 
 
-
+@if($comment)
 <div>最新メッセージ</div>
 <div class="card-body d-flex">
   <!-- テーブル本体 -->
@@ -29,9 +29,10 @@
     </tbody>
   </table>
 </div>
+@endif
 
+<div>自分のChannel一覧</div>
 @if (count($channels) > 0)
-  <div>自分のChannel一覧</div>
   <div class="card-body d-flex">
     <!-- テーブル本体 -->
     @foreach ($channels as $channel)
@@ -57,6 +58,8 @@
     <script>GetInfoChannel({{$channel->id}});</script>
     @endforeach
   </div>
+@else
+<div>コメントはまだありません</div>
 @endif
 
 
