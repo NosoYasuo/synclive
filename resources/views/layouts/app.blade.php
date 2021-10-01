@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -56,9 +57,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('mypage') }}">
+                                        {{ __('mypage') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -76,5 +80,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('js')
 </body>
 </html>

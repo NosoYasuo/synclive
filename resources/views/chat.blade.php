@@ -52,28 +52,38 @@
 }
 </style>
 <div class="chat-container row justify-content-center">
-    <div class="chat-area">
+    <div class="chat-area col-10">
         <div class="card">
             <div class="card-header">Comment</div>
             <div class="card-body chat-card">
-                @foreach ($comments as $item)
-                @include('components.comment', ['item' => $item])
-                @endforeach
+                <div id="comment-data"></div>
             </div>
         </div>
     </div>
 </div>
 
-<form method="POST" action="{{ url('add')}}">
-    @csrf
+<form action="{{ url('add') }}" method="POST" class="form-horizontal">
+  {{ csrf_field() }}
     <div class="comment-container row justify-content-center">
-        <div class="input-group comment-area">
-            <textarea class="form-control" id="comment" name="comment" placeholder="push massage (shift + Enter)"
+        <div class="input-group comment-area col-10">
+            <textarea class="form-control" id="chat_comment" name="comment" placeholder="push massage (shift + Enter)"
                 aria-label="With textarea"
                 onkeydown="if(event.shiftKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
-            <button type="submit" id="submit" class="btn btn-outline-primary comment-btn">Submit</button>
+                {{-- chat先ID --}}
+                <input type="hidden" id ="to_user_id" name ="to_user_id" value="{{$id}}">
+            <button type="submit" class="btn btn-outline-primary comment-btn">Submit</button>
         </div>
     </div>
 </form>
+
+@section('js')
+<script src="{{ asset('js/comment.js') }}"></script>
+
+<script>
+    let id = document.getElementById("to_user_id").value;
+    console.log(id);
+
+</script>
+@endsection
 
 @endsection

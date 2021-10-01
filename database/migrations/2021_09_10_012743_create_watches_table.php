@@ -16,8 +16,8 @@
                 Schema::create("watches", function (Blueprint $table) {
 
 						$table->bigIncrements('id');
-						$table->string('watch');
-						$table->bigInteger('users_id')->unsigned();
+						$table->string('watch')->unique();
+						$table->bigInteger('user_id')->unsigned();
 						$table->timestamps();
 
 
