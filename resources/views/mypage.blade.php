@@ -29,10 +29,13 @@
     </tbody>
   </table>
 </div>
+@else
+<div>コメントはまだありません</div>
 @endif
 
-<div>自分のChannel一覧</div>
+
 @if (count($channels) > 0)
+<div>自分のChannel一覧</div>
   <div class="card-body d-flex">
     <!-- テーブル本体 -->
     @foreach ($channels as $channel)
@@ -58,8 +61,6 @@
     <script>GetInfoChannel({{$channel->id}});</script>
     @endforeach
   </div>
-@else
-<div>コメントはまだありません</div>
 @endif
 
 

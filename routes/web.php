@@ -10,6 +10,9 @@
 |
 */
 
+use App\Channel;
+use App\Watch;
+
 //ログインした人だけが見えるページ
 Route::group(['middleware' => 'auth'], function () {
 
