@@ -87,6 +87,7 @@
 
 @auth
   <!-- チャンネルID登録フォーム -->
+  <div class="fixed-bottom">
   <div class="flex-container">
   <form action="{{ url('postChannel') }}" method="POST" class="form-inline">
     {{ csrf_field() }}
@@ -104,6 +105,8 @@
       </div>
     </div>
   </div>
+
   </form>
+</div>
 @endif
 @endsection
