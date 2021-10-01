@@ -16,8 +16,8 @@
                 Schema::create("channels", function (Blueprint $table) {
 
 						$table->bigIncrements('id');
-						$table->string('channel');
-						$table->bigInteger('users_id')->unsigned();
+						$table->string('channel')->unique();
+						$table->bigInteger('user_id')->unsigned();
 						$table->timestamps();
 						//$table->foreign("users_id")->references("id")->on("users");
 

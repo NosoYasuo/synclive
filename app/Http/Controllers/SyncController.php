@@ -57,7 +57,7 @@ class SyncController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'watch_id' => 'required|max:255',
+            'watch_id' => 'required|min:11|max:11',
         ]);
 
         //バリデーション:エラー
@@ -70,7 +70,7 @@ class SyncController extends Controller
         // Eloquentモデル
         $watches = new Watch;
         $watches->watch = $request->watch_id;
-        $watches->users_id = Auth::id();
+        $watches->user_id = Auth::id();
         $watches->save();
         return redirect('/');
     }
@@ -80,7 +80,7 @@ class SyncController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'channel_id' => 'required|max:255',
+            'channel_id' => 'required|min:24|max:24|starts_with:UC',
         ]);
 
         //バリデーション:エラー
@@ -93,7 +93,7 @@ class SyncController extends Controller
         // Eloquentモデル
         $channels = new Channel;
         $channels->channel = $request->channel_id;
-        $channels->users_id = Auth::id();
+        $channels->user_id = Auth::id();
         $channels->save();
         return redirect('/');
     }
