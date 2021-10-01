@@ -22,8 +22,8 @@
     </thead>
     <tbody>
         <tr>
-          <th scope="row">{{$comment->name}}</th>
-          <td class="table-active"><a href="{{ url('chat/'.$comment->login_id)}}">{{$comment->comment}}</a></td>
+          <th scope="row">{{$comment->sender_name}}</th>
+          <td class="table-active"><a href="{{ url('chat/'.$comment->sender_id)}}">{{$comment->comment}}</a></td>
           <td>{{$comment->updated_at}}</td>
         </tr>
     </tbody>

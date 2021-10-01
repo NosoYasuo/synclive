@@ -40,8 +40,8 @@ class UserController extends Controller
         // })->where('login_id', '!=', Auth::id())->get();
         // dd($aa);
 
-        $comment = Comment::where('ToUserId', Auth::id())->first();
-        // dd($comments);
+        $comment = Comment::where('recipient_id', Auth::id())->orderBy('id', 'desc')->first();
+        // dd($comment);
         return view('mypage', ['watches' => $watches, 'comment' =>$comment, 'channels' => $channels]);
     }
 

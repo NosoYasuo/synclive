@@ -11,7 +11,7 @@
 <!-- watch ID登録フォーム -->
 <div class="sticky-top">
 <div class="flex container">
-<form action="{{ url('watch') }}" method="POST" class="form-inline">
+<form action="{{ url('postWatch') }}" method="POST" class="form-inline">
     {{ csrf_field() }}
     <div class="form-group mb-2">
       <div class="col-sm-6">
@@ -88,7 +88,7 @@
 @auth
   <!-- チャンネルID登録フォーム -->
   <div class="flex-container">
-  <form action="{{ url('post') }}" method="POST" class="form-inline">
+  <form action="{{ url('postChannel') }}" method="POST" class="form-inline">
     {{ csrf_field() }}
 
       <div class="form-group mb-2">

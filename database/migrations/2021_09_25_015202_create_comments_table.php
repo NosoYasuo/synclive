@@ -18,7 +18,6 @@ class CreateCommentsTable extends Migration
             $table->integer('sender_id');
             $table->string('sender_name');
             $table->integer('recipient_id');
-            $table->string('recipient_name');
             $table->string('comment');
             $table->integer('read')->nullable();
             $table->timestamps();

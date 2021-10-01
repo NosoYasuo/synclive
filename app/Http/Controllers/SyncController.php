@@ -32,13 +32,21 @@ class SyncController extends Controller
         $user = Auth::user();
         $comment = $request->comment;
         $to_user_id = $request->to_user_id;
+        // Comment::create([
+        //     'sender_id' => $user->id,
+        //     'sender_name' => $user->name,
+        //     'comment' => $comment,
+        //     'recipient_id' => $to_user_id,
 
-        Comment::create([
-            'login_id' => $user->id,
-            'name' => $user->name,
-            'comment' => $comment,
-            'ToUserId' => $to_user_id
-        ]);
+        // ]);
+
+        // Eloquentモデル
+        $comments = new Comment;
+        $comments->sender_id = $user->id;
+        $comments->sender_name = $user->name;
+        $comments->comment = $comment;
+        $comments->recipient_id = $to_user_id;
+        $comments->save();
         return redirect('/chat/' . $to_user_id);
         // return response()->json();
     }
@@ -46,7 +54,7 @@ class SyncController extends Controller
     //api通信
     public function getData(Request $request)
     {
-        $comments = Comment::whereIn('login_id', [Auth::id(), $request->id])->whereIn('ToUserId', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
+        $comments = Comment::whereIn('sender_id', [Auth::id(), $request->id])->whereIn('recipient_id', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
         // $comments = Comment::whereIn('login_id', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
         $json = ["comments" => $comments];
         return response()->json($json);
