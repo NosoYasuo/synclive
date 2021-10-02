@@ -9,6 +9,7 @@
 
 @auth
 <!-- watch ID登録フォーム -->
+<div class="wrap">
 <div class="sticky-top">
 <div class="flex container">
 <form action="{{ url('postWatch') }}" method="POST" class="form-inline">
@@ -28,8 +29,8 @@
   </form>
 @endif
 <div class="p-3 mb-2 .bg-gradient-dark bg-secondary text-white">
-<h2 class="text-center">𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚</h2>
-<h6 class="text-center">あなたも世界のライブクリエーター！</h6>
+<h1 class="text-center">𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚</h1>
+<h5 class="text-center">あなたも世界のライブクリエーター！</h5>
 </div>
 </div>
 </div>
@@ -98,6 +99,8 @@
       </div>
   </div>
 
+
+
     <!-- 本 登録ボタン -->
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-6">
@@ -106,7 +109,9 @@
     </div>
   </div>
 
+
   </form>
 </div>
+
 @endif
 @endsection
