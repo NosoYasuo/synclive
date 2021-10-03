@@ -7,7 +7,7 @@ function get_data() {
     console.log(id2);
 
     $.ajax({
-        url: "result/ajax/",
+        url: "https://testsynclive.herokuapp.com/room/result/ajax",
         dataType: "json",
         data: {'id1':id1, 'id2':id2},
         success: data => {

@@ -53,7 +53,7 @@
 
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch->watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div>W# {{$watch->id}}</div>
-    <div>channel:<a id="author{{$watch->id}}"></a></div>
+    <div>{{ __('channel') }}:<a id="author{{$watch->id}}"></a></div>
     <div>title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     @if($watch->user_id == Auth::id())

@@ -9,9 +9,7 @@
 <div>ID:{{Auth::id()}}</div>
 <div>name:{{Auth::user()->name}}</div>
 
-
 @if($rooms)
-
   <div>最新メッセージ</div>
   <div class="card-body d-flex">
     <!-- テーブル本体 -->
