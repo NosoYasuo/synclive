@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Channel');
     }
+
+    public function room_u1s()
+    {
+        return $this->hasMany('App\Room', 'user1');
+    }
+
+    public function room_u2s()
+    {
+        return $this->hasMany('App\Room', 'user2');
+    }
 }

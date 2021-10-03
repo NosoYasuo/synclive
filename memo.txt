@@ -26,3 +26,23 @@
   </table>
 </div>
 @endif
+
+
+//コントローラー
+        // $comments = Comment::whereIn('id', function ($query) {
+        //     $query->select(DB::raw('MAX(id) As id'))->from('comments')->groupBy('ToUserId');
+        //     })->get();
+        // $comments = Comment::where('ToUserId', Auth::id())->groupBy('login_id')->first();
+        // $aa = Comment::where(['login_id', 'ToUserId'], Auth::id())->get();
+        // $aa = Comment::whereRaw('`login_id` = ? OR ToUserId = ?', [Auth::id(), Auth::id()])->get();
+        // dd($comments);
+        // where('login_id', '!=', Auth::id())
+        // $aa = Comment::select(DB::raw('MAX(id) As id'))->from('comments')->groupBy('login_id');
+        // $aa = Comment::whereIn('id', function ($query) {
+        //     $query->select(DB::raw('MAX(id) As id'))->from('comments')->groupBy('ToUserId');
+        // })->where('login_id', '!=', Auth::id())->get();
+        // dd($aa);
+
+
+            <td class="table-active"><a href="{{ url('chat/'.$comment->sender_id)}}">{{$comment->comment}}</a></td>
+            <td>{{$comment->updated_at}}</td>

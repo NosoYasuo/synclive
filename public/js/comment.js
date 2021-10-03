@@ -2,14 +2,14 @@ $(function() {
     get_data();
 });
 
-
-
 function get_data() {
+        console.log(id1);
+    console.log(id2);
 
     $.ajax({
         url: "result/ajax/",
         dataType: "json",
-        data: {'id':id},
+        data: {'id1':id1, 'id2':id2},
         success: data => {
             $("#comment-data")
                 .find(".comment-visible")
@@ -37,7 +37,7 @@ function get_data() {
         }
     });
 
-    setTimeout("get_data()", 1000);
+    setTimeout("get_data()", 10000);
 }
 
 

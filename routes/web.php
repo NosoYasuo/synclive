@@ -25,9 +25,9 @@ Route::get('userpage/{id}', 'UserController@userpage');
 Route::get('mypage', 'UserController@mypage');
 
 //chatに関して
-Route::get('/chat/{id}', 'SyncController@chat');
-Route::post('/add', 'SyncController@store_chat');
-Route::get('chat/result/ajax', 'SyncController@getData');
+Route::get('/room/{id}', 'SyncController@room');
+Route::post('/add', 'UserController@store_chat');
+Route::get('room/result/ajax', 'UserController@getData');
 });
 
 Route::get('/', 'SyncController@index');

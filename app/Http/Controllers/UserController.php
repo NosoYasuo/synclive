@@ -8,6 +8,7 @@ use App\User;
 use App\Channel;
 use App\Watch;
 use App\Comment;
+use App\Room;
 use Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -26,23 +27,39 @@ class UserController extends Controller
     {
         $watches = Watch::where ('user_id',Auth::id())->get();
         $channels = Channel::where('user_id', Auth::id())->get();
-        // $comments = Comment::whereIn('id', function ($query) {
-        //     $query->select(DB::raw('MAX(id) As id'))->from('comments')->groupBy('ToUserId');
-        //     })->get();
-        // $comments = Comment::where('ToUserId', Auth::id())->groupBy('login_id')->first();
-        // $aa = Comment::where(['login_id', 'ToUserId'], Auth::id())->get();
-        // $aa = Comment::whereRaw('`login_id` = ? OR ToUserId = ?', [Auth::id(), Auth::id()])->get();
-        // dd($comments);
-        // where('login_id', '!=', Auth::id())
-        // $aa = Comment::select(DB::raw('MAX(id) As id'))->from('comments')->groupBy('login_id');
-        // $aa = Comment::whereIn('id', function ($query) {
-        //     $query->select(DB::raw('MAX(id) As id'))->from('comments')->groupBy('ToUserId');
-        // })->where('login_id', '!=', Auth::id())->get();
-        // dd($aa);
 
-        $comment = Comment::where('recipient_id', Auth::id())->orderBy('id', 'desc')->first();
-        // dd($comment);
-        return view('mypage', ['watches' => $watches, 'comment' =>$comment, 'channels' => $channels]);
+        $rooms =  Room::where('user2', Auth::id())->orwhere('user1', Auth::id())->orderBy('id', 'desc')->get();
+        $room = Room::find(5);
+        return view('mypage', ['watches' => $watches, 'rooms' => $rooms, 'channels' => $channels]);
+    }
+
+    //chatをDBに保存(chat.blade.php)
+    public function store_chat(Request $request)
+    {
+        $user = Auth::user();
+        $comment = $request->comment;
+        $recipient_id = $request->recipient_id;
+        $room_id = $request->room_id;
+
+        // Eloquentモデル
+        $comments = new Comment;
+        $comments->sender_id = $user->id;
+        $comments->sender_name = $user->name;
+        $comments->comment = $comment;
+        $comments->recipient_id = $recipient_id;
+        $comments->room_id = $room_id;
+        $comments->save();
+        return redirect('/room/' . $recipient_id);
+        // return response()->json();
+    }
+
+    //api通信
+    public function getData(Request $request)
+    {
+        $comments = Comment::whereIn('sender_id', [$request->id1, $request->id2])->whereIn('recipient_id', [$request->id1, $request->id2])->orderBy('created_at', 'desc')->get();
+        // $comments = Comment::whereIn('login_id', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
+        $json = ["comments" => $comments];
+        return response()->json($json);
     }
 
 

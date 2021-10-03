@@ -13,4 +13,9 @@ class Comment extends Model
     protected $guarded = [
         'create_at', 'update_at'
     ];
+
+    public function room()
+    {
+        return $this->belongsTo('App\Room');
+    }
 }

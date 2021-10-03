@@ -7,7 +7,7 @@
 <div>{{$user->id}}</div>
 <div>{{$user->name}}</div>
 
-<button><a href="{{ url('chat/'.$user->id)}}">CHATする</a></button>
+<button><a href="{{ url('room/'.$user->id)}}">CHATする</a></button>
 
 
 @endsection
