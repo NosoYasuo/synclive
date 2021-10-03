@@ -41,27 +41,27 @@ function get_data() {
 }
 
 
-// $(function () {
-//     let submit = $('#submit');
-//     submit.on('click', function () {
-//         let comment = $('#chat_comment').val();
-//         let to_user_id = $('#to_user_id').val();
-//         console.log(comment);
-//         console.log(to_user_id);
-//         // ajax処理スタート
-//         $.ajax({
-//             headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
-//             url: 'add',
-//             method: 'POST',
-//             data: {'comment': comment},
-//         })
-//         //通信成功した時の処理
-//         .done(function () {
-//             get_data();
-//         })
-//         //通信失敗した時の処理
-//         .fail(function () {
-//             console.log('fail');
-//         });
-//     });
-// });
+$(function () {
+    let submit = $('#submit');
+    submit.on('click', function () {
+        let comment = $('#chat_comment').val();
+        let to_user_id = $('#to_user_id').val();
+        console.log(comment);
+        console.log(to_user_id);
+        // ajax処理スタート
+        $.ajax({
+            headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
+            url: 'add',
+            method: 'POST',
+            data: {'comment': comment},
+        })
+        //通信成功した時の処理
+        .done(function () {
+            get_data();
+        })
+        //通信失敗した時の処理
+        .fail(function () {
+            console.log('fail');
+        });
+    });
+});
