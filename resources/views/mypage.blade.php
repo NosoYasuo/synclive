@@ -22,23 +22,27 @@
       </thead>
       <tbody>
       @foreach ($rooms as $room)
-          <tr>
-            @if($room->user1 !== Auth::id())
-            <th scope="row">{{$room->get_user1->name}}</th>
-            <th scope="row"><a href="{{url('room/'.$room->user1)}}">{{$room->comments->last()->comment}}</a></th>
-            <th scope="row">{{$room->comments->last()->created_at}}</th>
-            @else
-            <th scope="row">{{$room->get_user2->name}}</th>
-            <th scope="row"><a href="{{url('room/'.$room->user2)}}">{{$room->comments->last()->comment}}</a></th>
-            <th scope="row">{{$room->comments->last()->created_at}}</th>
-            @endif
-          </tr>
+        @if($room->comments->last())
+            <tr>
+              @if($room->user1 !== Auth::id())
+              <th scope="row">{{$room->get_user1->name}}</th>
+              <th scope="row"><a href="{{url('room/'.$room->user1)}}">{{$room->comments->last()->comment}}</a></th>
+              <th scope="row">{{$room->comments->last()->created_at}}</th>
+              @else
+              <th scope="row">{{$room->get_user2->name}}</th>
+              <th scope="row"><a href="{{url('room/'.$room->user2)}}">{{$room->comments->last()->comment}}</a></th>
+              <th scope="row">{{$room->comments->last()->created_at}}</th>
+              @endif
+            </tr>
+        @else
+        <tr><th colspan="3">メッセージはまだありません</th></tr>
+        @endif
       @endforeach
       </tbody>
     </table>
   </div>
 @else
-<div>コメントはまだありません</div>
+<div>メッセージはまだありません</div>
 @endif
 
 
