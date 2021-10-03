@@ -70,7 +70,14 @@
                 aria-label="With textarea"
                 onkeydown="if(event.shiftKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                 {{-- chat先ID --}}
-                <input type="hidden" id ="to_user_id" name ="to_user_id" value="{{$id}}">
+                <input type="hidden" id ="user1" value="{{$room->user1}}">
+                <input type="hidden" id ="user2" value="{{$room->user2}}">
+                @if($room->user1 == Auth::id())
+                <input type="hidden" name ="recipient_id" value="{{$room->user2}}">
+                @else()
+                <input type="hidden" name ="recipient_id" value="{{$room->user1}}">
+                @endif
+                <input type="hidden" name ="room_id" value="{{$room->id}}">
             <button type="submit" class="btn btn-outline-primary comment-btn">Submit</button>
         </div>
     </div>
@@ -80,9 +87,10 @@
 <script src="{{ asset('js/comment.js') }}"></script>
 
 <script>
-    let id = document.getElementById("to_user_id").value;
-    console.log(id);
-
+    let id1 = document.getElementById("user1").value;
+    let id2 = document.getElementById("user2").value;
+    console.log(id1);
+    console.log(id2);
 </script>
 @endsection
 

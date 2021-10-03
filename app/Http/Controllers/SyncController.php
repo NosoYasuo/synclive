@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Channel;
 use App\Watch;
+use App\Room;
 use App\Comment;
 use Validator;
 
@@ -21,43 +22,17 @@ class SyncController extends Controller
     }
 
     //chat表示(chat.blade.php)
-    public function chat($id)
+    public function room($id)
     {
-        return view('chat', ['id' => $id]);
-    }
-
-    //chatをDBに保存(chat.blade.php)
-    public function store_chat(Request $request)
-    {
-        $user = Auth::user();
-        $comment = $request->comment;
-        $to_user_id = $request->to_user_id;
-        // Comment::create([
-        //     'sender_id' => $user->id,
-        //     'sender_name' => $user->name,
-        //     'comment' => $comment,
-        //     'recipient_id' => $to_user_id,
-
-        // ]);
-
-        // Eloquentモデル
-        $comments = new Comment;
-        $comments->sender_id = $user->id;
-        $comments->sender_name = $user->name;
-        $comments->comment = $comment;
-        $comments->recipient_id = $to_user_id;
-        $comments->save();
-        return redirect('/chat/' . $to_user_id);
-        // return response()->json();
-    }
-
-    //api通信
-    public function getData(Request $request)
-    {
-        $comments = Comment::whereIn('sender_id', [Auth::id(), $request->id])->whereIn('recipient_id', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
-        // $comments = Comment::whereIn('login_id', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
-        $json = ["comments" => $comments];
-        return response()->json($json);
+        $user1 = Auth::id();
+        $user2 = $id;
+        if ($user1 <= $user2) {
+            $room = Room::firstOrCreate(['user1' => $user1, 'user2' => $user2]);
+        }else{
+            $room = Room::firstOrCreate(['user1' => $user2, 'user2' => $user1]);
+        }
+        
+        return view('chat', ['room' => $room]);
     }
 
     //watchをstore

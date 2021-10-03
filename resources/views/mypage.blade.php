@@ -10,25 +10,35 @@
 <div>name:{{Auth::user()->name}}</div>
 
 
-@if($comment)
-<div>最新メッセージ</div>
-<div class="card-body d-flex">
-  <!-- テーブル本体 -->
-  <table class="table table-striped table-hover">
-    <thead>
-      <td>名前</td>
-      <td>内容</td>
-      <td>最終メッセージ時間</td>
-    </thead>
-    <tbody>
-        <tr>
-          <th scope="row">{{$comment->sender_name}}</th>
-          <td class="table-active"><a href="{{ url('chat/'.$comment->sender_id)}}">{{$comment->comment}}</a></td>
-          <td>{{$comment->updated_at}}</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+@if($rooms)
+
+  <div>最新メッセージ</div>
+  <div class="card-body d-flex">
+    <!-- テーブル本体 -->
+
+    <table class="table table-striped table-hover">
+      <thead>
+        <td>名前</td>
+        <td>内容</td>
+        <td>最終メッセージ時間</td>
+      </thead>
+      <tbody>
+      @foreach ($rooms as $room)
+          <tr>
+            @if($room->user1 !== Auth::id())
+            <th scope="row">{{$room->get_user1->name}}</th>
+            <th scope="row"><a href="{{url('room/'.$room->user1)}}">{{$room->comments->last()->comment}}</a></th>
+            <th scope="row">{{$room->comments->last()->created_at}}</th>
+            @else
+            <th scope="row">{{$room->get_user2->name}}</th>
+            <th scope="row"><a href="{{url('room/'.$room->user2)}}">{{$room->comments->last()->comment}}</a></th>
+            <th scope="row">{{$room->comments->last()->created_at}}</th>
+            @endif
+          </tr>
+      @endforeach
+      </tbody>
+    </table>
+  </div>
 @else
 <div>コメントはまだありません</div>
 @endif

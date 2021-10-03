@@ -57,7 +57,11 @@
     <div>channel:<a id="author{{$watch->id}}"></a></div>
     <div>title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
+    @if($watch->user_id == Auth::id())
+    <div>user_id:{{$watch->user_id}}</div>
+    @else
     <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_id:{{$watch->user_id}}</a></div>
+    @endif
     <div>created_at:{{$watch->created_at}}</div>
   </div>
   <script>GetInfoWatch({{$watch->id}});</script>
@@ -78,7 +82,11 @@
       <div>C# {{$channel->id}}</div>
       <div>channel:<a id="c_author{{$channel->id}}"></a></div>
       <div>title:<a id="c_title{{$channel->id}}"></a></div>
+      @if($channel->user_id == Auth::id())
+      <div>user_id:{{$channel->user_id}}</div>
+      @else
       <div><a href="{{ url('userpage/'.$channel->user_id)}}">user_id:{{$channel->user_id}}</a></div>
+      @endif
       <div>created_at:{{$channel->created_at}}</div>
     </div>
       <script>GetInfoChannel({{$channel->id}});</script>
