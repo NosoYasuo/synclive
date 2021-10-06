@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile')->nullable();
             $table->string('avail_time')->nullable();
-            $table->string('price')->nullable();;
+            $table->text('price')->nullable();;
             $table->rememberToken();
             $table->timestamps();
         });
