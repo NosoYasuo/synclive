@@ -51,6 +51,7 @@
   color: #a0a0a0;
 }
 </style>
+
 <div class="chat-container row justify-content-center">
     <div class="chat-area col-10">
         <div class="card">
@@ -82,6 +83,7 @@
         </div>
     </div>
 </form>
+
 
 @section('js')
 <script src="{{ asset('js/comment.js') }}"></script>

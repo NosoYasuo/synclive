@@ -29,8 +29,8 @@
   </form>
 @endif
 <div class="p-3 mb-2 .bg-gradient-dark bg-secondary text-white">
-<h1 class="text-center">𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚</h1>
-<h5 class="text-center">あなたも世界のライブクリエーター！</h5>
+<h1 class="text-center"> 𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚 </h1>
+<h5 class="text-center">You are also a Live-creator in the world!</h5>
 </div>
 </div>
 </div>
@@ -54,7 +54,7 @@
 
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch->watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div>W# {{$watch->id}}</div>
-    <div>{{ __('channel') }}:<a id="author{{$watch->id}}"></a></div>
+    <div>{{ __('lively') }}:<a id="author{{$watch->id}}"></a></div>
     <div>title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     @if($watch->user_id == Auth::id())
@@ -80,7 +80,7 @@
 
       <div style="display:none;">watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
       <div>C# {{$channel->id}}</div>
-      <div>channel:<a id="c_author{{$channel->id}}"></a></div>
+      <div>lively:<a id="c_author{{$channel->id}}"></a></div>
       <div>title:<a id="c_title{{$channel->id}}"></a></div>
       @if($channel->user_id == Auth::id())
       <div>user_id:{{$channel->user_id}}</div>
@@ -96,7 +96,7 @@
 
 @auth
   <!-- チャンネルID登録フォーム -->
-  <div class="fixed-bottom">
+  <div class="fixed-bottom:auto">
   <div class="flex-container">
   <form action="{{ url('postChannel') }}" method="POST" class="form-inline">
     {{ csrf_field() }}

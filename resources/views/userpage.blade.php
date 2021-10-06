@@ -2,12 +2,13 @@
 @extends('layouts.app')
 @section('content')
 
-<div>Userpage</div>
+<div class="container">
+<div class="display-3">Userpage</div>
 
-<div>{{$user->id}}</div>
-<div>{{$user->name}}</div>
+<div class="lead">user_id{{$user->id}}</div>
+<div class="lead">to {{$user->name}}</div>
 
 <button><a href="{{ url('room/'.$user->id)}}">CHATする</a></button>
-
+</div>
 
 @endsection
