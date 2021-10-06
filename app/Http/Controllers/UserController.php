@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    // ダッシュボード表示
+    // userpageダッシュボード表示
     public function userpage($id)
     {
         $user = User::find($id);
-        return view('userpage', ['user' => $user]);
+
+        $watches = Watch::where('user_id', $id)->get();
+        $channels = Channel::where('user_id', $id)->get();
+
+        return view('userpage', ['user' => $user, 'watches' => $watches, 'channels' => $channels]);
     }
 
 
@@ -60,6 +64,28 @@ class UserController extends Controller
         // $comments = Comment::whereIn('login_id', [Auth::id(), $request->id])->orderBy('created_at', 'desc')->get();
         $json = ["comments" => $comments];
         return response()->json($json);
+    }
+
+    //プロフィール更新
+    public function edit_prof(Request $request)
+    {
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'message' => 'required|max:191',
+        ]);
+
+        //バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $users = User::find(Auth::id());
+        $users->message = $request->message;
+        $users->save();
+
+        return redirect('mypage');
     }
 
 
