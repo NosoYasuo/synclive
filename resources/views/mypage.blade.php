@@ -10,6 +10,18 @@
 <div class="lead">ID:{{Auth::id()}}</div>
 <div class="lead">name:{{Auth::user()->name}}</div>
 
+
+{{-- メッセージ更新 --}}
+<form action="{{url('edit_prof')}}" method="POST">
+  {{ csrf_field() }}
+  <input type="text" name="message" value="{{Auth::user()->message}}">
+  <button type="submit" class="">更新</button>
+</form>
+
+
+
+
+{{-- chat room表示 --}}
 @if($rooms)
   <div>※最新メッセージ※</div>
   <div class="card-body d-flex">
@@ -46,6 +58,8 @@
 <div>メッセージはまだありません</div>
 @endif
 
+
+{{-- watch表示 --}}
 @if (count($watches) > 0)
   <div class="lead">自分のWatch一覧</div>
   <div class="card-body d-flex">
@@ -77,7 +91,7 @@
 @endif
 
 
-
+{{-- channels表示 --}}
 @if (count($channels) > 0)
 <div class="lead">自分のChannel一覧</div>
   <div class="card-body d-flex">

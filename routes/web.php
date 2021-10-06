@@ -24,6 +24,8 @@ Route::get('userpage/{id}', 'UserController@userpage');
 
 Route::get('mypage', 'UserController@mypage');
 
+Route::post('edit_prof', 'UserController@edit_prof');
+
 //chatに関して
 Route::get('/room/{id}', 'SyncController@room');
 Route::post('/add', 'UserController@store_chat');
