@@ -71,7 +71,8 @@ class UserController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'message' => 'required|max:191',
+            'profile' => 'max:191',
+            'avail_time' => 'max:191',
         ]);
 
         //バリデーション:エラー
@@ -82,7 +83,9 @@ class UserController extends Controller
         }
 
         $users = User::find(Auth::id());
-        $users->message = $request->message;
+        $users->profile = $request->profile;
+        $users->avail_time = $request->avail_time;
+        $users->price = $request->price;
         $users->save();
 
         return redirect('mypage');
