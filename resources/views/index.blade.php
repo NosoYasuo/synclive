@@ -103,7 +103,7 @@
 
       <div class="form-group mb-2">
           <div class="col-sm-6">
-        Channel ID<input type="text" name="channel_id" class="form-control">
+        Channel ID<input type="text" size="27" name="channel_id" class="form-control">
       </div>
   </div>
 
