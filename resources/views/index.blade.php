@@ -44,18 +44,18 @@
 <!-- 現在の本 -->
 @if (count($watches) > 0)
 {{-- <div>Watch一覧</div> --}}
-<div class="card-body d-flex justify-content-around flex-wrap">
+<div class="card-body d-flex justify-content-around align-content-between flex-wrap">
   <!-- テーブル本体 -->
   @foreach ($watches as $watch)
   <!-- 本タイトル -->
-  <div>
+  <div class="p-2">
 
     <!--autoplay=1&mute=1&playsinline=1&loop=1-->
 
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch->watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div>W# {{$watch->id}}</div>
+    <div style="display:none">W# {{$watch->id}}</div>
     <div>{{ __('lively') }}:<a id="author{{$watch->id}}"></a></div>
-    <div>title:<a id="title{{$watch->id}}"></a></div>
+    <div class="box-read">title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     @if($watch->user_id == Auth::id())
     <div>user_name:{{$watch->user->name}}</div>
@@ -71,17 +71,17 @@
 <!-- 既に登録されてるリスト -->
 @if (count($channels) > 0)
   {{-- <div>Channel一覧</div> --}}
-  <div class="card-body d-flex justify-content-around flex-wrap">
+  <div class="card-body d-flex justify-content-around align-content-between flex-wrap">
   @foreach ($channels as $channel)
-    <div>
+    <div class="p-2">
       <!-- 本タイトル -->
       <!-- ?autoplay=1&mute=1&playsinline=1&loop=1 -->
       <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$channel->GetId($channel->channel)}}?autoplay=1&mute=1&playsinline=1&loop=1" frameborder="0" allowfullscreen></iframe>
 
       <div style="display:none;">watch:<a id="c_watchId{{$channel->id}}">{{$channel->GetId($channel->channel)}}</a></div>
-      <div>C# {{$channel->id}}</div>
+      <div style="display: none">C# {{$channel->id}}</div>
       <div>lively:<a id="c_author{{$channel->id}}"></a></div>
-      <div>title:<a id="c_title{{$channel->id}}"></a></div>
+      <div class="box-read">title:<a id="c_title{{$channel->id}}"></a></div>
       @if($channel->user_id == Auth::id())
       <div>user_name:{{$channel->user->name}}</div>
       @else

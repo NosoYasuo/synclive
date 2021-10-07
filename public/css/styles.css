@@ -13,4 +13,11 @@ body {
   opacity:0.75;
  }
 
- 
+ .box-read {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 380px;
+}
+
+

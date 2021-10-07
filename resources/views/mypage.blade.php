@@ -27,10 +27,10 @@
 {{-- メッセージ更新 --}}
 <form action="{{url('edit_prof')}}" method="POST">
   {{ csrf_field() }}
-  <div> プロフィール:<textarea class="tarea" name="profile">{{Auth::user()->profile}}</textarea></div>
-  <div>ライブ可能時間:<input type="text" name="avail_time" value="{{Auth::user()->avail_time}}"></div>
-  <div>金額:<input type="text" name="price" value="{{Auth::user()->price}}">円</div>
-  <button type="submit" class="">更新</button>
+  <div> Profile（自己紹介）<textarea class="tarea" name="profile" style="width:300px">{{Auth::user()->profile}}</textarea></div>
+  <div>Talk trip (Live) Possible date and time　（生ライブ可能な曜日、時間帯等）<input type="text"  placeholder="ex)Sat. Sun. Japan time pm" name="avail_time" style="width:250px;" value="{{Auth::user()->avail_time}}"></div>
+  <div>Time required and amount（時間と金額）<input type="text" 　placeholder="ex) 25miniutes: ￥3000"　name="price" style="width:250px;" value="{{Auth::user()->price}}"></div>
+  <button type="submit" class="">submit</button>
 </form>
 
 {{-- chat room表示 --}}
