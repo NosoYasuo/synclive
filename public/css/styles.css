@@ -16,6 +16,10 @@ body {
   opacity:0.71;
  }
 
+ .p-2{
+     background-color: whitesmoke;
+ }
+
  .box-read {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,4 +27,6 @@ body {
     width: 380px;
 }
 
-
+.display3{
+    font-family: "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro";
+}
