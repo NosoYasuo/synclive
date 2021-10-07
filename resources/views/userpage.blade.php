@@ -8,7 +8,7 @@
 <div class="frex container">
 <div class="display-3">Userpage</div>
 
-<div class="lead">user_id{{$user->id}}</div>
+<div class="lead" style="display:none;">user_id{{$user->id}}</div>
 <div class="lead">to {{$user->name}}</div>
 <div>メッセージ</div>
 <div>プロフィール{{$user->profile}}</div>

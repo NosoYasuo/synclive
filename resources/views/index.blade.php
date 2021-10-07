@@ -60,7 +60,7 @@
     @if($watch->user_id == Auth::id())
     <div>user_name:{{$watch->user->name}}</div>
     @else
-    <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_id:{{$watch->user_id}}</a></div>
+    <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_name:{{$watch->user->name}}</a></div>
     @endif
     <div>created_at:{{$watch->created_at}}</div>
   </div>
