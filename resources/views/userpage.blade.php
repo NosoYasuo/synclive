@@ -10,8 +10,10 @@
 
 <div class="lead">user_id{{$user->id}}</div>
 <div class="lead">to {{$user->name}}</div>
-<div class>メッセージ</div>
-<div>{{$user->message}}</div>
+<div>メッセージ</div>
+<div>プロフィール{{$user->profile}}</div>
+<div>ライブ可能時間{{$user->avail_time}}</div>
+<div>金額{{$user->price}}円</div>
 
 <button><a href="{{ url('room/'.$user->id)}}">CHATする</a></button>
 
