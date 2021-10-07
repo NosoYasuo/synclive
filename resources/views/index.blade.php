@@ -58,7 +58,7 @@
     <div>title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     @if($watch->user_id == Auth::id())
-    <div>user_id:{{$watch->user_id}}</div>
+    <div>user_name:{{$watch->user->name}}</div>
     @else
     <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_id:{{$watch->user_id}}</a></div>
     @endif
@@ -83,9 +83,9 @@
       <div>lively:<a id="c_author{{$channel->id}}"></a></div>
       <div>title:<a id="c_title{{$channel->id}}"></a></div>
       @if($channel->user_id == Auth::id())
-      <div>user_id:{{$channel->user_id}}</div>
+      <div>user_name:{{$channel->user->name}}</div>
       @else
-      <div><a href="{{ url('userpage/'.$channel->user_id)}}">user_id:{{$channel->user_id}}</a></div>
+      <div><a href="{{ url('userpage/'.$channel->user_id)}}">user_name:{{$channel->user->name}}</a></div>
       @endif
       <div>created_at:{{$channel->created_at}}</div>
     </div>

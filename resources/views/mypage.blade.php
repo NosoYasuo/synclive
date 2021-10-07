@@ -27,7 +27,7 @@
 {{-- メッセージ更新 --}}
 <form action="{{url('edit_prof')}}" method="POST">
   {{ csrf_field() }}
-  <div> プロフィール:<textarea class="tarea" name="profile" value="{{Auth::user()->profile}}"></textarea></div>
+  <div> プロフィール:<textarea class="tarea" name="profile">{{Auth::user()->profile}}</textarea></div>
   <div>ライブ可能時間:<input type="text" name="avail_time" value="{{Auth::user()->avail_time}}"></div>
   <div>金額:<input type="text" name="price" value="{{Auth::user()->price}}">円</div>
   <button type="submit" class="">更新</button>
