@@ -46,3 +46,8 @@
 
             <td class="table-active"><a href="{{ url('chat/'.$comment->sender_id)}}">{{$comment->comment}}</a></td>
             <td>{{$comment->updated_at}}</td>
+
+
+
+                    @else
+        <tr><th colspan="3">メッセージはまだありません</th></tr>

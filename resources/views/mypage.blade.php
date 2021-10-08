@@ -59,8 +59,6 @@
               <th scope="row">{{$room->comments->last()->created_at}}</th>
               @endif
             </tr>
-        @else
-        <tr><th colspan="3">メッセージはまだありません</th></tr>
         @endif
       @endforeach
       </tbody>
