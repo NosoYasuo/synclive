@@ -10,11 +10,11 @@
 
 <div class="lead" style="display:none;">user_id{{$user->id}}</div>
 
-<div class="lead">from{{$user->name}}</div>
+<div class="lead">from {{$user->name}}</div>
 <div>プロフィール：{{$user->profile}}</div>
 <div>ライブ可能時間：{{$user->avail_time}}</div>
 <div>金額：{{$user->price}}円</div>
-<div></div>
+<div>・・・・・・・・・・・・・</div>
 <div>共感や声援、生ライブして欲しい気持ち等のメッセージを送ろう</div>
 <div class="lead">to {{$user->name}}</div>
 <button><a href="{{ url('room/'.$user->id)}}">CHATする</a></button>
