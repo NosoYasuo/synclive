@@ -25,6 +25,16 @@
 @endif
 </head>
 <body>
+    <style>
+            .dropdown-item.active,
+.dropdown-item:active {
+  /* color: #fff; */
+  color:darkblue;
+  text-decoration: none;
+  /* background-color: #3490dc; */
+  background-color: #f6ebef;
+}
+</style>
     <div id="app">
         <nav class="navbar navbar-expand-xl navbar-light bg-white shadow-sm">
             <div class="container">
@@ -58,7 +68,6 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
