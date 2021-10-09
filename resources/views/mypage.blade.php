@@ -7,7 +7,7 @@
 <div class="frex container">
 <div class="display-3">MYPAGE</div>
 
-<div class="lead">ID:{{Auth::id()}}</div>
+<div class="lead" style="display:none">ID:{{Auth::id()}}</div>
 <div class="lead">name:{{Auth::user()->name}}</div>
 
 <style>
@@ -22,13 +22,23 @@
         line-height: 1.5;
         height: 6em;
     }
+    .txt{
+        display: inline-block;
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    margin: 0.5em 0;
+    }
+
     </style>
 
 {{-- メッセージ更新 --}}
 <form action="{{url('edit_prof')}}" method="POST">
   {{ csrf_field() }}
   <div> Profile（自己紹介）<textarea class="tarea" name="profile" style="width:300px">{{Auth::user()->profile}}</textarea></div>
-  <div>Talk trip (Live) Possible date and time　（生ライブ可能な曜日、時間帯等）<input type="text"  placeholder="ex)Sat. Sun. Japan time pm" name="avail_time" style="width:250px;" value="{{Auth::user()->avail_time}}"></div>
+  <div>Talk trip (Livestream) Possible date and time　（生ライブ可能な曜日、時間帯等）<input type="text"  placeholder="ex)Sat. Sun. Japan time pm" name="avail_time" style="width:250px;" value="{{Auth::user()->avail_time}}"></div>
   <div>Time required and amount（時間と金額）<input type="text" 　placeholder="ex) 25miniutes: ￥3000"　name="price" style="width:250px;" value="{{Auth::user()->price}}"></div>
   <button type="submit" class="">submit</button>
 </form>
