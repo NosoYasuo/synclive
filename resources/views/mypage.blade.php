@@ -5,7 +5,7 @@
 <script src="{{ asset('/js/index.js') }}"></script>
 
 <div class="frex container">
-<div class="display-3">MYPAGE</div>
+<div class="display-3" style="background-color: rgb(236, 234, 235)">MYPAGE</div>
 
 <div class="lead" style="display:none">ID:{{Auth::id()}}</div>
 <div class="lead">name:{{Auth::user()->name}}</div>

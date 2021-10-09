@@ -6,7 +6,7 @@
 <script src="{{ asset('/js/index.js') }}"></script>
 
 <div class="frex container">
-<div class="display-3">Userpage</div>
+<div class="display-3" style="background-color: rgb(235, 235, 235)">Userpage</div>
 
 <div class="lead" style="display:none;">user_id{{$user->id}}</div>
 
