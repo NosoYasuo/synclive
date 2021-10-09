@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     @if(app('env') == 'production')
-    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css?20211009') }}" rel="stylesheet">
 @else
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endif
