@@ -9,6 +9,9 @@
 
 <div class="lead" style="display:none">ID:{{Auth::id()}}</div>
 <div class="lead">name:{{Auth::user()->name}}</div>
+<div>
+    <p><a href="{{ url('/password/change') }}">Change Password</a></p>
+    </div>
 
 <style>
     .tarea{

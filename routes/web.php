@@ -52,4 +52,7 @@ Route::get('top', function () {
 });
 
 Auth::routes();
+Route::get('/password/change', 'Auth\ChangePasswordController@edit');
+Route::patch('/password/change','Auth\ChangePasswordController@update')->name('password.change');
+
 Route::get('/home', 'HomeController@index')->name('home');
