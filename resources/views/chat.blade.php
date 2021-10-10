@@ -79,7 +79,7 @@
                 <input type="hidden" name ="recipient_id" value="{{$room->user1}}">
                 @endif
                 <input type="hidden" name ="room_id" value="{{$room->id}}">
-            <button type="submit" class="btn btn-outline-primary comment-btn">Submit</button>
+            <button type="submit" class="btn btn-outline-info comment-btn">Submit</button>
         </div>
     </div>
 </form>
