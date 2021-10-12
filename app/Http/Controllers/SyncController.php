@@ -52,7 +52,7 @@ class SyncController extends Controller
 
         // Eloquentモデル
         $watches = new Watch;
-        $watches->watch = $request->watch_id;
+        $watches->watch = $request->watch;
         $watches->user_id = Auth::id();
         $watches->save();
         return redirect('/');
@@ -75,7 +75,7 @@ class SyncController extends Controller
 
         // Eloquentモデル
         $channels = new Channel;
-        $channels->channel = $request->channel_id;
+        $channels->channel = $request->channel;
         $channels->user_id = Auth::id();
         $channels->save();
         return redirect('/');
