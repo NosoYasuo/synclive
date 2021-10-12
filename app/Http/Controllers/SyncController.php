@@ -31,7 +31,7 @@ class SyncController extends Controller
         }else{
             $room = Room::firstOrCreate(['user1' => $user2, 'user2' => $user1]);
         }
-        
+
         return view('chat', ['room' => $room]);
     }
 
@@ -40,7 +40,7 @@ class SyncController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'watch_id' => 'required|min:11|max:11',
+            'watch' => 'required|string|min:11|max:11|unique:watches',
         ]);
 
         //バリデーション:エラー
@@ -63,7 +63,7 @@ class SyncController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'channel_id' => 'required|min:24|max:24|starts_with:UC',
+            'channel' => 'required|string|min:24|max:24|starts_with:UC|unique:channels',
         ]);
 
         //バリデーション:エラー

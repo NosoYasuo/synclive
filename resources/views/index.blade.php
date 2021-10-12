@@ -7,6 +7,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="{{ asset('/js/index.js') }}"></script>
 
+<!-- バリデーションエラーの表示に使用-->
+@include('common.errors')
+<!-- バリデーションエラーの表示に使用-->
+
 @auth
 <!-- watch ID登録フォーム -->
 <div class="wrap">
@@ -16,7 +20,7 @@
     {{ csrf_field() }}
     <div class="form-group mb-2">
       <div class="col-sm-6">
-        Watch ID<input type="text" name="watch_id" class="form-control">
+        Watch ID<input type="text" name="watch" class="form-control">
       </div>
     </div>
 
@@ -37,9 +41,7 @@
 
 
 
-<!-- バリデーションエラーの表示に使用-->
-@include('common.errors')
-<!-- バリデーションエラーの表示に使用-->
+
 
 <!-- 現在の本 -->
 @if (count($watches) > 0)
@@ -58,9 +60,9 @@
     <div class="box-read">title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     @if($watch->user_id == Auth::id())
-    <div>user_name:{{$watch->user->name}}</div>
+      <div>user_name:{{$watch->user->name}}</div>
     @else
-    <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_name:{{$watch->user->name}}</a></div>
+      <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_name:{{$watch->user->name}}</a></div>
     @endif
     <div>created_at:{{$watch->created_at}}</div>
   </div>
@@ -68,6 +70,7 @@
   @endforeach
 </div>
 @endif
+
 <!-- 既に登録されてるリスト -->
 @if (count($channels) > 0)
   {{-- <div>Channel一覧</div> --}}
@@ -96,30 +99,24 @@
 
 @auth
   <!-- チャンネルID登録フォーム -->
-  <div class="fixed-bottom:auto">
+<div class="fixed-bottom:auto">
   <div class="flex-container">
-  <form action="{{ url('postChannel') }}" method="POST" class="form-inline">
-    {{ csrf_field() }}
+    <form action="{{ url('postChannel') }}" method="POST" class="form-inline">
+      {{ csrf_field() }}
 
-      <div class="form-group mb-2">
+        <div class="form-group mb-2">
           <div class="col-sm-6">
-        Channel ID<input type="text" size="27" name="channel_id" class="form-control">
+            Channel ID<input type="text" size="27" name="channel" class="form-control">
+          </div>
+        </div>
+      <!-- 本 登録ボタン -->
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">
+          <button type="submit" class="btn btn-secondary">sync</button>
+        </div>
       </div>
+    </form>
   </div>
-
-
-
-    <!-- 本 登録ボタン -->
-    <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-6">
-        <button type="submit" class="btn btn-secondary">sync</button>
-      </div>
-    </div>
-  </div>
-
-
-  </form>
 </div>
-
 @endif
 @endsection
