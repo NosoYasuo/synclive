@@ -33,7 +33,7 @@
   </form>
 @endif
 <div class="p-3 mb-2 .bg-gradient-dark bg-secondary text-white">
-<h1 class="text-center"> 𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚 </h1>
+<h1 class="text-center"> 𝘾𝙪𝙧𝙞𝙤𝙨𝙞𝙩𝙚 </h1>
 <h5 class="text-center">You are also a Live-creator in the world!</h5>
 </div>
 </div>
@@ -52,18 +52,23 @@
   <!-- 本タイトル -->
   <div class="p-2">
 
+
     <!--autoplay=1&mute=1&playsinline=1&loop=1-->
 
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch->watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div style="display:none">W# {{$watch->id}}</div>
     <div>{{ __('lively') }}:<a id="author{{$watch->id}}"></a></div>
+    {{-- \DB::table('watches')->insert([
+        $watch -> author ="'author'{{$watch->id}}"  => 'チャンネル名'
+     ]); --}}
+
     <div class="box-read">title:<a id="title{{$watch->id}}"></a></div>
     <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
     @if($watch->user_id == Auth::id())
       <div>user_name:{{$watch->user->name}}</div>
     @else
       <div><a href="{{ url('userpage/'.$watch->user_id)}}">user_name:{{$watch->user->name}}</a></div>
-    @endif
+      @endif
     <div>created_at:{{$watch->created_at}}</div>
   </div>
   <script>GetInfoWatch({{$watch->id}});</script>
@@ -72,6 +77,7 @@
 @endif
 
 <!-- 既に登録されてるリスト -->
+
 @if (count($channels) > 0)
   {{-- <div>Channel一覧</div> --}}
   <div class="card-body d-flex justify-content-around align-content-between flex-wrap">
