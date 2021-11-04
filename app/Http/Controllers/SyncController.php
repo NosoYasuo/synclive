@@ -15,10 +15,15 @@ class SyncController extends Controller
     // ダッシュボード表示(index.blade.php)
     public function index()
     {
+        $x = date("Y-m-d H:i:s",strtotime("-4 week"));
         $channels = Channel::orderBy('created_at', 'asc')->get();
-        $watches = Watch::orderBy('created_at', 'asc')->get();
-
+        $watches = Watch::where('created_at', '>=', $x)->orderBy('created_at', 'asc')->get();
         return view('index', ['channels' => $channels, 'watches' => $watches]);
+    }
+    public function confirm()
+    {
+
+        return view('confirm');
     }
 
     //chat表示(chat.blade.php)

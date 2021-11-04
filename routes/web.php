@@ -25,6 +25,7 @@ Route::get('userpage/{id}', 'UserController@userpage');
 Route::get('mypage', 'UserController@mypage');
 
 Route::post('edit_prof', 'UserController@edit_prof');
+Route::get('/confirm', 'SyncController@confirm');
 
 //chatに関して
 Route::get('/room/{id}', 'SyncController@room');
