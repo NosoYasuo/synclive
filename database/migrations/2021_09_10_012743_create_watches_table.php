@@ -17,6 +17,9 @@
 
 						$table->bigIncrements('id');
 						$table->string('watch')->unique();
+                        $table->string('title');
+                        $table->string('author');
+                        $table->string('user_name');
 						$table->bigInteger('user_id')->unsigned();
 						$table->timestamps();
 
