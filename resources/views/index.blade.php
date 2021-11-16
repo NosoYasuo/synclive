@@ -14,8 +14,9 @@
 @auth
 <!-- watch ID登録フォーム -->
 <div class="wrap">
-<div class="sticky-top">
-<div class="flex container">
+ <div class="sticky-top">
+  <div class="flex container">
+    <div class="d-flex bd-highlight mb-2">
 <form action="{{ url('postWatch') }}" method="POST" class="form-inline">
     {{ csrf_field() }}
     <div class="form-group mb-2">
@@ -26,11 +27,26 @@
 
     <!-- 本 登録ボタン -->
     <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-6">
+     <div class="col-sm-offset-3 col-sm-6">
       <button type="submit" class="btn btn-secondary">sync</button>
+     </div>
     </div>
-</div>
   </form>
+  <form action="{{ url('postSerch') }}" method="POST" class="form-inline">
+    {{ csrf_field() }}
+    <div class="form-group mb-2">
+      <div class="col-sm-6">
+        Serch<input type="text" name="serch" class="form-control">
+      </div>
+    </div>
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">
+          <button type="submit" class="btn btn-secondary">serch</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
 @endif
 <div class="p-3 mb-2 .bg-gradient-dark bg-secondary text-white">
 <h1 class="text-center"> 𝙎𝙮𝙣𝙘𝙇𝙞𝙫𝙚 </h1>
@@ -56,9 +72,9 @@
 
     <iframe width="373" height="210" src="https://www.youtube.com/embed/{{$watch->watch}}?autoplay=1&mute=1&playsinline=1&loop=1&playlist={{$watch->watch}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div style="display:none">W# {{$watch->id}}</div>
-    <div>{{ __('lively') }}:<a id="author{{$watch->id}}"></a></div>
-    <div class="box-read">title:<a id="title{{$watch->id}}"></a></div>
-    <div style="display:none;">watch:<a id="watchId{{$watch->id}}">{{$watch->watch}}</a></div>
+    <div>{{ __('lively') }}:{{$watch->author}}</div>
+    <div class="box-read">title:{{$watch->title}}</div>
+    <div style="display:none" >watch:{{$watch->watch}}</div>
     @if($watch->user_id == Auth::id())
       <div>user_name:{{$watch->user->name}}</div>
     @else
@@ -66,7 +82,6 @@
     @endif
     <div>created_at:{{$watch->created_at}}</div>
   </div>
-  <script>GetInfoWatch({{$watch->id}});</script>
   @endforeach
 </div>
 @endif

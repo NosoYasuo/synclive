@@ -12,6 +12,7 @@
 
 use App\Channel;
 use App\Watch;
+use Illuminate\Http\Request;
 
 //ログインした人だけが見えるページ
 Route::group(['middleware' => 'auth'], function () {
