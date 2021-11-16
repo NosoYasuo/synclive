@@ -12,6 +12,7 @@
 
 use App\Channel;
 use App\Watch;
+use Illuminate\Http\Request;
 
 //ログインした人だけが見えるページ
 Route::group(['middleware' => 'auth'], function () {
@@ -25,6 +26,7 @@ Route::get('userpage/{id}', 'UserController@userpage');
 Route::get('mypage', 'UserController@mypage');
 
 Route::post('edit_prof', 'UserController@edit_prof');
+Route::get('/confirm', 'SyncController@confirm');
 
 //chatに関して
 Route::get('/room/{id}', 'SyncController@room');
