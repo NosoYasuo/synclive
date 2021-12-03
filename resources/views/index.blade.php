@@ -32,11 +32,11 @@
      </div>
     </div>
   </form>
-  <form action="{{ url('postSerch') }}" method="POST" class="form-inline">
+  <form action="{{ url('getSearch') }}" method="GET" class="form-inline">
     {{ csrf_field() }}
     <div class="form-group mb-2">
       <div class="col-sm-6">
-        Serch<input type="text" name="serch" class="form-control">
+        Serch<input type="text" name="search" class="form-control">
       </div>
     </div>
       <div class="form-group">
