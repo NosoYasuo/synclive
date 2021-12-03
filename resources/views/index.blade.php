@@ -36,7 +36,7 @@
     {{ csrf_field() }}
     <div class="form-group mb-2">
       <div class="col-sm-6">
-        Serch<input type="text" name="search" class="form-control">
+        Search<input type="text" name="search" class="form-control">
       </div>
     </div>
       <div class="form-group">

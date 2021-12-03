@@ -1,11 +1,11 @@
 @if($watches->count())
 
 <table border="1">
-    <tr>
+    {{-- <tr>
         <th>title</th>
         <th>author</th>
         <th>name</th>
-    </tr>
+    </tr> --}}
     @foreach ($watches as $watch)
     <!-- 本タイトル -->
     <div class="p-2">
