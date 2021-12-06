@@ -15,7 +15,7 @@ class SyncController extends Controller
     // ダッシュボード表示(index.blade.php)
     public function index()
     {
-        $x = date("Y-m-d H:i:s",strtotime("-4 week"));
+        $x = date("Y-m-d H:i:s",strtotime("-2 week"));
         $channels = Channel::orderBy('created_at', 'asc')->get();
         $watches = Watch::where('created_at', '>=', $x)->orderBy('created_at', 'asc')->get();
         return view('index', ['channels' => $channels, 'watches' => $watches]);
