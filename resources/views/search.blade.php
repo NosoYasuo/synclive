@@ -1,6 +1,15 @@
+@extends('layouts.app')
+@section('content')
+
+<link rel="stylesheet" type="text/css" href="{{asset('css/styles.css?20211010')}}">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{{ asset('/js/index.js') }}"></script>
+
 @if($watches->count())
 
-<table border="1">
+<div class="card-body d-flex justify-content-around align-content-between flex-wrap">
+
+{{-- <table border="1"> --}}
     {{-- <tr>
         <th>title</th>
         <th>author</th>
@@ -27,6 +36,11 @@
     @endforeach
 </table>
 
+</div>
+
 @else
 <p>見つかりませんでした。</p>
 @endif
+@endsection
+
+
